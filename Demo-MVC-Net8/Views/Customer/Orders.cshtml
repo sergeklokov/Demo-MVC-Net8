@@ -1,0 +1,41 @@
+﻿@model Demo_MVC_Net8.Models.CustomerViewModel
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Name</h3>
+            <p>@Model.FullName</p>
+        </div>
+        <div class="col-md-6">
+            <h3>Customer #</h3>
+            <p>@Model.CustomerNumber</p>
+        </div>
+    </div>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Description</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.OrderId</td>
+                    <td>@order.OrderDate.ToString("M/d/yyyy h:mm tt")</td>
+                    <td>@order.Description</td>
+                    <td>@order.Total.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
